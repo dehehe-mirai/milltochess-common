@@ -23,10 +23,15 @@ namespace Miltochess
                 {
                     listener.OnBuyUnit(player, sellingUnits[i]);
                 }
-                
+
                 sellingUnits.RemoveAt(i);
                 return true;
             }
+        }
+
+        public void SetSellingUnit(int playerLevel, Dictionary<string, ChessUnit> unitPool)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddShopListener(ChessShopListener shopListener)
