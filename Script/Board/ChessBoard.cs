@@ -43,10 +43,25 @@ namespace Miltochess
             return this.boardMatrix;
         }
 
+        public void IssueMoveUnit(ChessUnit unit, int x, int y)
+        {
+            unit.StartMove(x,y);
+        }
+
         public void OnUnitRemove(ChessUnit unit)
         {
             boardMatrix[unit.x, unit.y] = 0;
             units.Remove(unit);
+        }
+
+        public void OnUnitMoveStart(ChessUnit unit)
+        {
+            boardMatrix[unit.x, unit.y] = 0;
+        }
+
+        public void OnUnitMoveEnd(ChessUnit unit)
+        {
+            boardMatrix[unit.x, unit.y] = unit.id;
         }
     }
 }

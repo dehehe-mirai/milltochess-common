@@ -8,8 +8,8 @@ namespace Miltochess
     {
         public int price = 0;
         public int isAnimating;
-        internal int x;
-        internal int y;
+        public int x;
+        public int y;
         public double id;
 
         HashSet<ChessUnitListener> listeners = new HashSet<ChessUnitListener>();
@@ -28,6 +28,20 @@ namespace Miltochess
         public void addListener(ChessUnitListener chessUnitListener)
         {
             listeners.Add(chessUnitListener);
+        }
+
+        public void StartMove(int x, int y)
+        {
+            foreach (ChessUnitListener listener in listeners) {
+                listener.OnUnitMoveStart(this);
+            }
+
+            this.x = x;
+            this.y = y;
+
+            foreach (ChessUnitListener listener in listeners) {
+                listener.OnUnitMoveEnd(this);
+            }
         }
     }
 }
