@@ -11,11 +11,26 @@ namespace Tests
         private List<ChessBoard> boards;
         private List<ChessShop> shops;
 
-        public GameTests(List<ChessPlayer> players, List<ChessBoard> boards, List<ChessShop> shops)
+        public GameTests(List<ChessPlayer> players)
         {
             this.players = players;
-            this.boards = boards;
-            this.shops = shops;
+        }
+        // public GameTests(List<ChessPlayer> players, List<ChessBoard> boards, List<ChessShop> shops)
+        // {
+        //     this.players = players;
+        //     this.boards = boards;
+        //     this.shops = shops;
+        // }
+
+        [Test]
+        public void StartChessGame() {
+            ChessGame game = new ChessGame();
+            game.SetPlayers(this.players);
+
+            Assert.AreEqual(game.GetPlayersCount(), this.players.Count);
+
+            game.SetToStartPhase();
+            Assert.AreEqual(ChessGameState.INITIAL, game.State);
         }
     }
 }

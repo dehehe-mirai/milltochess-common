@@ -6,6 +6,7 @@ namespace Miltochess{
     {
         List<ChessUnit> unitInInventory = new List<ChessUnit>();
         int money = 0;
+        private ChessBoard Board;
 
         public int Money { get => money; set => money = value; }
 
@@ -22,6 +23,16 @@ namespace Miltochess{
         public void SuccessBuyUnit(ChessUnit unit)
         {
             unitInInventory.Add(unit);
+        }
+
+        public void SetBoard(ChessBoard chessBoard)
+        {
+            this.Board = chessBoard;
+        }
+
+        public ChessBoard GetBoard()
+        {
+            return this.Board;
         }
     }
 }
