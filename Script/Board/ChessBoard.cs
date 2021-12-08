@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace Miltochess {
+namespace Miltochess
+{
 
-    public class ChessBoard
+    public class ChessBoard : ChessUnitListener
     {
         public Matrix boardMatrix;
         public List<ChessUnit> units = new List<ChessUnit>();
@@ -12,20 +13,24 @@ namespace Miltochess {
         {
             var board = new ChessBoard();
             board.boardMatrix = Matrix.ZeroMatrix(x, y);
-            
+
             return board;
         }
 
         public void PutUnit(ChessUnit unit, int x, int y)
         {
             units.Add(unit);
-            boardMatrix[x,y] = unit.id;
+            unit.addListener(this);
+
+            boardMatrix[x, y] = unit.id;
         }
 
         public ChessUnit GetUnitOn(int x, int y)
         {
-            foreach(var unit in units) {
-                if (unit.x == x && unit.y == y) {
+            foreach (var unit in units)
+            {
+                if (unit.x == x && unit.y == y)
+                {
                     return unit;
                 }
             }
@@ -36,6 +41,12 @@ namespace Miltochess {
         public Matrix GetCurrentMatrix()
         {
             return this.boardMatrix;
+        }
+
+        public void OnUnitRemove(ChessUnit unit)
+        {
+            boardMatrix[unit.x, unit.y] = 0;
+            units.Remove(unit);
         }
     }
 }
