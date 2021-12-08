@@ -7,7 +7,22 @@ namespace Miltochess
     public class ChessUnit
     {
         public int price = 0;
-        public int isAnimating;
+        public bool isAnimating;
+
+        #region Stats
+            public int hp;
+            public int hpMax;
+            public int mp;
+            public int mpMax;
+            public int atk;
+            public int def;
+            public int mat;
+            public int mdf;
+            public int spd;
+            public int hit;
+
+        #endregion
+
         public int x;
         public int y;
         public double id;
