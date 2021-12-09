@@ -63,5 +63,13 @@ namespace Miltochess
         {
             boardMatrix[unit.x, unit.y] = unit.id;
         }
+
+        public void WillAttachModifier(ChessUnit unit, Modifier modifier)
+        {
+        }
+
+        public void DidAttachModifier(ChessUnit unit, Modifier modifier)
+        {
+        }
     }
 }
