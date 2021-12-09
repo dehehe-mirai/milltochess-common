@@ -16,5 +16,12 @@ namespace Tests
             unit.Remove();
             chessUnitListener.Verify(x=>x.OnUnitRemove(unit), Times.Once);
         }
+        [Test]
+        public void UnitHaveBaseStatAndCurrentStat()
+        {
+            ChessUnit unit = ChessUnit.BaseUnit();
+            Assert.NotNull(unit.GetBaseStat());
+            Assert.NotNull(unit.GetCurrentStat());
+        }
     }
 }
